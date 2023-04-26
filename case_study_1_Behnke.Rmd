@@ -5,17 +5,16 @@ date: "2023-04-11"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
 
-### INTRODUCTION
+INTRODUCTION
 
-To showcase my obtained skills from **Google Data Analytics Professional Certificate**, this case study is part of the last course **(Google Data Analytics Capstone: Complete a Case study)**. I've used the 6 steps in Data Analytics **(Ask, Prepare, Process, Analyze, Share, and Act)** to complete this case study.
+To showcase my obtained skills from Google Data Analytics Professional Certificate, this case study is part of the last course (Google Data Analytics Capstone: Complete a Case study). I've used the 6 steps in Data Analytics (Ask, Prepare, Process, Analyze, Share, and Act) to complete this case study.
 
-# Ask phase
+Ask phase
 
-### Background of the company
+Background of the company
 
 In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The bikes can be unlocked from one station and returned to any other station in the system anytime.
 
@@ -23,105 +22,95 @@ Until now, Cyclistic's marketing strategy relied on building general awareness a
 
 Cyclistic's finance analysts have concluded that annual members are much more profitable than casual riders. Although the pricing flexibility helps Cyclistic attract more customers, Moreno believes that maximizing the number of annual members will be key to future growth. Rather than creating a marketing campaign that targets all-new customers, Moreno believes there is a very good chance to convert casual riders into members. She notes that casual riders are already aware of the Cyclistic program and have chosen Cyclistic for their mobility needs.
 
-### Key Stakeholders
+Key Stakeholders
 
--   **Lily Moreno** - The director of marketing and your manager. Moreno is responsible for the development of campaigns and initiatives to promote the bike-share program.
+Lily Moreno - The director of marketing and your manager. Moreno is responsible for the development of campaigns and initiatives to promote the bike-share program.
 
--   **Cyclistic marketing analytics team** - A team of data analysts who are responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy.
+Cyclistic marketing analytics team - A team of data analysts who are responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy.
 
--   **Cyclistic executive team** - The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
+Cyclistic executive team - The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
 
-### Business Task
+Business Task
 
 Design marketing strategies aimed at converting casual riders into annual members. In order to do that, however, the marketing analyst team needs to better understand how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics.
 
-### Three questions that will guide the future marketing program:
+Three questions that will guide the future marketing program:
 
--   How do annual members and casual riders use Cyclistic bikes differently?
+How do annual members and casual riders use Cyclistic bikes differently?
 
--   Why would casual riders buy Cyclistic annual memberships?
+Why would casual riders buy Cyclistic annual memberships?
 
--   How can Cyclistic use digital media to influence casual riders to become members?
+How can Cyclistic use digital media to influence casual riders to become members?
 
-# Prepare phase
+Prepare phase
 
-### Data source
+Data source
 
--   The data used in this case study is from **Cyclistic's historical trip data** and is available [here](https://divvy-tripdata.s3.amazonaws.com/index.html) and stored as a zip file.
+The data used in this case study is from Cyclistic's historical trip data and is available here and stored as a zip file.
 
--   The license to use this data, under **Motivate International Inc.**, is found [here](https://ride.divvybikes.com/data-license-agreement).
+The license to use this data, under Motivate International Inc., is found here.
 
--   Regarding the issues about bias/credibility of the data, ROCCC (Reliable, Original, Comprehensive, Current, Cited) is observed and followed. The data protects the cyclist's personal data by only providing the ride number.
+Regarding the issues about bias/credibility of the data, ROCCC (Reliable, Original, Comprehensive, Current, Cited) is observed and followed. The data protects the cyclist's personal data by only providing the ride number.
 
--   The data range is from January 2022 to December 2022 to make a 1 year analysis.
+The data range is from January 2022 to December 2022 to make a 1 year analysis.
 
-# Process phase
+Process phase
 
-### Breakdown of steps followed in data cleaning and manipulation:
+Breakdown of steps followed in data cleaning and manipulation:
 
--   Downloaded the data, stored, and extracted it to a folder (CSV), then saved it as .XLSX file in XLSX folder.
+Downloaded the data, stored, and extracted it to a folder (CSV), then saved it as .XLSX file in XLSX folder.
 
--   First, I ensured that there are no typographical errors by filtering each column (except ride_id). Highlighted the columns that were dealing with date & time and used the format type **(dd/mm/yyyy h:mm)** to ensure all dates are on the right format. For time data, I used the format type **([h]:mm:ss)** to ensure data are on the right format. To check for missing data, I highlighted each column and used the **=ISBLANK(range)** function which returns **TRUE** if a cell is empty and **FALSE** otherwise, then used the **=COUNTIF(range,criteria)** function to see if there are missing cells.
+First, I ensured that there are no typographical errors by filtering each column (except ride_id). Highlighted the columns that were dealing with date & time and used the format type (dd/mm/yyyy h:mm) to ensure all dates are on the right format. For time data, I used the format type ([h]:mm:ss) to ensure data are on the right format. To check for missing data, I highlighted each column and used the =ISBLANK(range) function which returns TRUE if a cell is empty and FALSE otherwise, then used the =COUNTIF(range,criteria) function to see if there are missing cells.
 
--   The following steps were made in the 12 sheets (202201 to 202212). I proceeded to make another column called **mean_ride_length** to calculate the average ride length by using **=ABS(D2-C2)** function to avoid (-) time error then formatted the column by **[h]:mm:ss**. After that, I made another column called **day_of_week** to obtain the day the ride was made using **=WEEKDAY(C2,1)** function then formatted the column as general **(1 = Sunday and 7 = Saturday)**.
+The following steps were made in the 12 sheets (202201 to 202212). I proceeded to make another column called mean_ride_length to calculate the average ride length by using =ABS(D2-C2) function to avoid (-) time error then formatted the column by [h]:mm:ss. After that, I made another column called day_of_week to obtain the day the ride was made using =WEEKDAY(C2,1) function then formatted the column as general (1 = Sunday and 7 = Saturday).
 
-# Analyze phase
+Analyze phase
 
--   The 12 month data sheets were combined in a new excel file to make the analysis faster and more efficient. The new excel file contains 13 sheets, including the main sheet where pivot tables will be made. Sheets were Main, 202201 until 202212.
+The 12 month data sheets were combined in a new excel file to make the analysis faster and more efficient. The new excel file contains 13 sheets, including the main sheet where pivot tables will be made. Sheets were Main, 202201 until 202212.
 
--   In the main sheet, I calculated the average ride length of every month using the average function (**=AVERAGE('202201'!C:C)**) where 2022**01** corresponds to the month. Then, I used PivotTable and PivotChart Wizard to add the 12 sheets to save time.
+In the main sheet, I calculated the average ride length of every month using the average function (=AVERAGE('202201'!C:C)) where 202201 corresponds to the month. Then, I used PivotTable and PivotChart Wizard to add the 12 sheets to save time.
 
--   During calculation, I followed these steps:
+During calculation, I followed these steps:
 
-    -   Calculate the average ride_length for members and casual riders. Try rows = member_casual; Values = Average of ride_length.
+Calculate the average ride_length for members and casual riders. Try rows = member_casual; Values = Average of ride_length.
 
-    -   Calculate the average ride_length for users by day_of_week. Try columns = day_of_week; Rows = member_casual; Values = Average of ride_length.
+Calculate the average ride_length for users by day_of_week. Try columns = day_of_week; Rows = member_casual; Values = Average of ride_length.
 
-    -   Calculate the number of rides for users by day_of_week by adding Count of trip_id to Values.
+Calculate the number of rides for users by day_of_week by adding Count of trip_id to Values.
 
-    -   From the pivot table, I visualized the graphs that would be used to answer the business task and additional questions.
+From the pivot table, I visualized the graphs that would be used to answer the business task and additional questions.
 
-# Share phase
+Share phase
 
-### Findings
+Findings
 
-![](Google%20Data%20Analytics/Course%208/Case%20study%201/Graphs/Rides%20per%20month.jpg)
-
-Based on the figure above, the number of rides were shown to determine the most and least rides during the year. July 2022 had the most number of rides **(823,488)** while January 2022 had the least number of rides **(103,770)**. Based on the figure, marketing team should aim converting casual into member during **May** **to September**. We could observe the increasing trend of number of rides during the start of the year while decreasing after reaching its peak number of rides. Now, we'll look into the number of rides by casual and member riders.
-
-![](Google%20Data%20Analytics/Course%208/Case%20study%201/Graphs/Rides%20per%20moneth%20by%20user%20type.jpg)
+Based on the figure above, the number of rides were shown to determine the most and least rides during the year. July 2022 had the most number of rides (823,488) while January 2022 had the least number of rides (103,770). Based on the figure, marketing team should aim converting casual into member during May to September. We could observe the increasing trend of number of rides during the start of the year while decreasing after reaching its peak number of rides. Now, we'll look into the number of rides by casual and member riders.
 
 As the figure above shows, this gives us clear number of the casual and member riders. Thus, reinforcing the claim of aiming the marketing strategy of converting the casual riders into members during May to September.
 
-![](Google%20Data%20Analytics/Course%208/Case%20study%201/Graphs/Days%20with%20most%20rides%20per%20month.jpg)
-
-Based on the figure above, **1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday, 6 = Friday, and 7 = Saturday**. We can see that most of the rides were made during **Saturday and Thursday** while **Friday** has the least number of rides in the year 2022.
+Based on the figure above, 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday, 6 = Friday, and 7 = Saturday. We can see that most of the rides were made during Saturday and Thursday while Friday has the least number of rides in the year 2022.
 
 By observing the previous figures, marketing team should aim their focus on Thursday to Saturday to optimize the campaign.
 
-![](Google%20Data%20Analytics/Course%208/Case%20study%201/Graphs/Average%20ride%20time%20per%20month%20by%20user%20type.jpg)
-
-![](Google%20Data%20Analytics/Course%208/Case%20study%201/Graphs/Months.jpg)
-
 From January until December, the figures above show that casual riders have longer ride length compared to the members. While members had the most rides throughout the year, casual riders had the longest ride length.
 
-During the 1 year period, the average ride length for casual riders is **28 mins and 14 secs**, while the average ride length for member riders is **12 minutes and 20 secs.**
+During the 1 year period, the average ride length for casual riders is 28 mins and 14 secs, while the average ride length for member riders is 12 minutes and 20 secs.
 
 In conclusion, members take more rides compared to the casual riders but has less ride length.
 
-# Act phase
+Act phase
 
-In this phase, I will be answering the questions based on my analysis. 
+In this phase, I will be answering the questions based on my analysis.
 
-**- How do annual members and casual riders use Cyclistic bikes differently?**
+- How do annual members and casual riders use Cyclistic bikes differently?
 
-  * Members do take rides more frequently compared to the casual riders. **278,807 rides per annum** for the members and **193,503 rides per annum** for the casual riders. Though casual riders tend to ride longer compared to the members. **28 mins and 14 secs per annum** for the casual riders and **12 mins and 20 secs** for the members. 
+Members do take rides more frequently compared to the casual riders. 278,807 rides per annum for the members and 193,503 rides per annum for the casual riders. Though casual riders tend to ride longer compared to the members. 28 mins and 14 secs per annum for the casual riders and 12 mins and 20 secs for the members.
 
-**- Why would casual riders buy Cyclistic annual memberships?**
+- Why would casual riders buy Cyclistic annual memberships?
 
-  * The only reason I see for the casual riders to buy Cyclistic annual memberships is when they are going for more consistent rides throughout the year. Based on the findings, members tend to ride more which may mean that their destination is planned. Obtaining traffic data would also be great but requires further analysis to help the marketing team advertise on getting the annual membership. 
-  
-**- How can Cyclistic use digital media to influence casual riders to become members?**
+The only reason I see for the casual riders to buy Cyclistic annual memberships is when they are going for more consistent rides throughout the year. Based on the findings, members tend to ride more which may mean that their destination is planned. Obtaining traffic data would also be great but requires further analysis to help the marketing team advertise on getting the annual membership.
 
-  * Cyclistic's marketing team could incorporate a cycling app that are for both members and casual riders. The membership gives the members achievements, guided tours, leaderboards, and the likes to attract the members to upgrade their membership. Advertising during **Thursday to Saturday** is optimal since it has the most rides regardless of the member type. 
+- How can Cyclistic use digital media to influence casual riders to become members?
+
+Cyclistic's marketing team could incorporate a cycling app that are for both members and casual riders. The membership gives the members achievements, guided tours, leaderboards, and the likes to attract the members to upgrade their membership. Advertising during Thursday to Saturday is optimal since it has the most rides regardless of the member type.
 
